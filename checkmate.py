@@ -7,6 +7,12 @@ def checkmate(board: str):
 
     king_position = find_king(parsed)
 
+    if king_position is None:
+        print("Fail")
+        return
+
+    # TODO: Check if the king is in checkmate (is_king_in_check function)
+
     return print(king_position)
 
 
@@ -66,3 +72,6 @@ def find_king(board):
                 return (i, j)
 
     return None
+
+
+# TODO: Check if the king is in checkmate (is_king_in_check function)
