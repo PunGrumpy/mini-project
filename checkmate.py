@@ -56,7 +56,7 @@ def find_king(board):
     # NOTE: enumerate gives index and value
     for i, row in enumerate(board):
         # IMPORTANT: Each row must be list
-        if not isinstance(i, list):
+        if not isinstance(row, list):
             return None
 
         for j, col in enumerate(row):
