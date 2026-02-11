@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
 from checkmate import checkmate
 
-
-def main():
-    board = """\
+example_1 = """\
 R...
 .K..
 ..P.
-....
+....\
 """
+example_2 = """\
+..
+.K\
+"""
+
+
+def main():
+    board = example_1
     checkmate(board)
 
 
