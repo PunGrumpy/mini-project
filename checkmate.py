@@ -1,6 +1,11 @@
 def checkmate(board: str):
     parsed = parse_board(board)
-    return parsed
+
+    if not validate_board(parsed):
+        print("Fail")
+        return
+
+    return print("Valid")
 
 
 def parse_board(board_str: str) -> list | None:
