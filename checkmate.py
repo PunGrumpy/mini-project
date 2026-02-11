@@ -5,7 +5,9 @@ def checkmate(board: str):
         print("Fail")
         return
 
-    return print("Valid")
+    king_position = find_king(parsed)
+
+    return print(king_position)
 
 
 def parse_board(board_str: str) -> list | None:
