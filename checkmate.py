@@ -46,3 +46,21 @@ def validate_board(board) -> bool:
         return False
 
     return True
+
+
+def find_king(board):
+    # IMPORTANT: Must be list
+    if not isinstance(board, list):
+        return None
+
+    # NOTE: enumerate gives index and value
+    for i, row in enumerate(board):
+        # IMPORTANT: Each row must be list
+        if not isinstance(i, list):
+            return None
+
+        for j, col in enumerate(row):
+            if col == "K":
+                return (i, j)
+
+    return None
