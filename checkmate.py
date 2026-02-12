@@ -5,7 +5,9 @@ def checkmate(board: str):
         print("Fail")
         return
 
-    return print("Valid")
+    king_position = find_king(parsed)
+
+    return print(king_position)
 
 
 def parse_board(board_str: str) -> list | None:
@@ -46,3 +48,21 @@ def validate_board(board) -> bool:
         return False
 
     return True
+
+
+def find_king(board):
+    # IMPORTANT: Must be list
+    if not isinstance(board, list):
+        return None
+
+    # NOTE: enumerate gives index and value
+    for i, row in enumerate(board):
+        # IMPORTANT: Each row must be list
+        if not isinstance(row, list):
+            return None
+
+        for j, col in enumerate(row):
+            if col == "K":
+                return (i, j)
+
+    return None
