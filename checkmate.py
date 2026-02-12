@@ -11,7 +11,7 @@ def checkmate(board: str):
         print("Fail")
         return
 
-    if is_king_in_check(parsed,king_position):
+    if is_king_in_check(parsed, king_position):
         print("Success")
     else:
         print("Fail")
@@ -78,7 +78,7 @@ def find_king(board):
 
 
 # TODO: Check if the king is in checkmate (is_king_in_check function)
-def is_king_in_check(board,king_position) -> bool:
+def is_king_in_check(board, king_position) -> bool:
     size = len(board)
     king_row, king_col = king_position
 
@@ -106,6 +106,7 @@ def is_king_in_check(board,king_position) -> bool:
 
     return False
 
+
 """
 . . . . . . .
 . . . . . . .
@@ -115,7 +116,9 @@ def is_king_in_check(board,king_position) -> bool:
 . . . . . . .  is_diagonal = true -> (abs(p_col - k_col) == 1)
 . . . . . . .
 """
-def pawn_attacks( p_row, p_col, k_row, k_col) -> bool:
+
+
+def pawn_attacks(p_row, p_col, k_row, k_col) -> bool:
     is_row_above = p_row - 1 == k_row
     is_diagonal = abs(p_col - k_col) == 1
 
@@ -123,6 +126,7 @@ def pawn_attacks( p_row, p_col, k_row, k_col) -> bool:
         return True
     else:
         return False
+
 
 """ 
 X . . . . . X  
@@ -133,6 +137,8 @@ X . . . . . X
 . X . . . X .  row_diff = 2, col_diff = 2 -> king in line move of bishop
 X . . . . . X
 """
+
+
 def bishop_attacks(board, b_row, b_col, k_row, k_col) -> bool:
     row_diff = abs(b_row - k_row)
     col_diff = abs(b_col - k_col)
@@ -152,12 +158,15 @@ X X X R X X X   r_row = 3, r_col = 3
 . . . X . . .   r_col == k_col -> true
 . . . X . . .   r_row == k_row -> false
 """
+
+
 def rook_attacks(board, r_row, r_col, k_row, k_col) -> bool:
     # check if rook in same row or column as king
     if r_row == k_row or r_col == k_col:
         return is_path_clear(board, r_row, r_col, k_row, k_col)
     else:
         return False
+
 
 def queen_attacks(board, q_row, q_col, k_row, k_col) -> bool:
     # queen can use logic of rook or bishop
@@ -171,19 +180,19 @@ def queen_attacks(board, q_row, q_col, k_row, k_col) -> bool:
 def is_path_clear(board, piece_row, piece_col, king_row, king_col) -> bool:
     # find row direction from piece to king
     if king_row > piece_row:
-        step_row = 1  
+        step_row = 1
     elif king_row < piece_row:
-        step_row = -1  
+        step_row = -1
     else:
-        step_row = 0  
+        step_row = 0
 
     # find col direction from piece to king
     if king_col > piece_col:
-        step_col = 1  
+        step_col = 1
     elif king_col < piece_col:
-        step_col = -1  
+        step_col = -1
     else:
-        step_col = 0  
+        step_col = 0
 
     # start check in next move
     current_row = piece_row + step_row
@@ -192,7 +201,7 @@ def is_path_clear(board, piece_row, piece_col, king_row, king_col) -> bool:
     while current_row != king_row or current_col != king_col:
         # check if attack other piece
         if board[current_row][current_col] != ".":
-            return False  
+            return False
         # move to next position
         current_row = current_row + step_row
         current_col = current_col + step_col
