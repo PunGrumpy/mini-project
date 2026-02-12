@@ -76,6 +76,7 @@ def find_king(board):
 
     return None
 
+
 def is_king_in_check(board, king_position) -> bool:
     size = len(board)
     king_row, king_col = king_position
