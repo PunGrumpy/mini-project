@@ -16,8 +16,6 @@ def checkmate(board: str):
     else:
         print("Fail")
 
-    return print(king_position)
-
 
 def parse_board(board_str: str) -> list | None:
     if not isinstance(board_str, str):
